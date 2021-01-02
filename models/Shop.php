@@ -29,7 +29,11 @@ class Shop
     {
         $sql = "
             SELECT
-              *
+              id,
+              name,
+              detail,
+              id as self_id,
+              (SELECT COUNT(id) FROM reviews WHERE shop_id = self_id) as total_reviews
             FROM
               shops
             WHERE
@@ -48,12 +52,74 @@ class Shop
     {
         $sql = "
             SELECT
-              *
+              id,
+              name,
+              detail,
+              id as self_id,
+              (SELECT COUNT(id) FROM reviews WHERE shop_id = self_id) as total_reviews
             FROM
               shops
           ";
 
         return fetch_all_objects($db, $sql, 'Shop');
+    }
+
+    public function fetch_reviews($db)
+    {
+        $sql = "
+            SELECT
+                id,
+                shop_id,
+                user_id,
+                created_at,
+                id as self_id,
+               (SELECT SUM(score) FROM sentences WHERE review_id = self_id) as total_score,
+               (SELECT name FROM users WHERE id = user_id) as user_name
+            FROM
+                reviews
+            WHERE 
+              shop_id = :shop_id
+          ";
+
+        $params = [
+            ':shop_id' => $this->id
+        ];
+
+        return fetch_all_objects($db, $sql, 'Review', $params);
+    }
+
+    public function get_average_score($db) {
+        $sql = "
+            SELECT
+                id as self_id,
+               (SELECT SUM(score) FROM sentences WHERE review_id = self_id) as total_score
+            FROM
+                reviews
+            WHERE 
+              shop_id = :shop_id
+          ";
+
+        $params = [
+            ':shop_id' => $this->id
+        ];
+
+        $reviews = fetch_all_objects($db, $sql, 'Review', $params);
+
+        return $this->calculate_average_score($reviews);
+    }
+
+    private function calculate_average_score($reviews) {
+        $sum = 0;
+        foreach ($reviews as $review) {
+            $sum += $review->formatted_total_score();
+        }
+
+        if ($sum === 0) {
+            return 0;
+        }
+
+        $average = $sum / count($reviews);
+        return round($average, 1);
     }
 }
 

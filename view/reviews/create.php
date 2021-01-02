@@ -17,7 +17,7 @@
             <label for="review">レビュー(200文字以内): </label>
             <textarea class="form-control" type="text" name="review" id="review" rows="3" maxlength="200"></textarea>
         </div>
-        <input type="hidden" name="shop_id" value="<?= h($shop->id) ?>">
+        <input type="hidden" name="id" value="<?= h($shop->id) ?>">
         <input type="hidden" name="csrf_token" value="<?= h($token) ?>">
 
         <input type="submit" value="投稿" class="btn btn-primary mt-2">

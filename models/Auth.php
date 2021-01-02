@@ -16,6 +16,12 @@ class Auth
         return User::find($db, $login_user_id);
     }
 
+    /**
+     * @param $db
+     * @param $name
+     * @param $password
+     * @return false | User
+     */
     public static function login($db, $name, $password)
     {
         $user = User::find_by_name($db, $name);
