@@ -26,8 +26,8 @@
         </tr>
         <?php foreach ($review->contents as $content) { ?>
         <tr>
-            <td><?= $content->body ?></td>
-            <td><?= $content->score ?></td>
+            <td><?= h($content->body) ?></td>
+            <td><?= h($content->score) ?></td>
         </tr>
         <?php } ?>
         </thead>
