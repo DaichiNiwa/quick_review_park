@@ -10,5 +10,6 @@ if (!Auth::check()) {
 $db = get_db_connect();
 
 $user = Auth::user($db);
+$reviews = $user->fetch_reviews($db);
 
 include_once '../../view/users/mypage.php';

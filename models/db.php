@@ -75,6 +75,6 @@ function execute_query($db, $sql, $params = []){
         return $statement->execute($params);
     }catch(PDOException $e){
         set_error('更新に失敗しました。');
+        throw new Exception();
     }
-    return false;
 }

@@ -12,3 +12,4 @@ define('SHOPS', '/shops/index.php');
 define('SHOPS_CREATE', '/shops/create.php');
 define('SHOPS_SHOW', '/shops/show.php');
 define('REVIEWS_CREATE', '/reviews/create.php');
+define('REVIEWS_SHOW', '/reviews/show.php');

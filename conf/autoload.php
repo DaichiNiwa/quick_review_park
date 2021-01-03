@@ -1,6 +1,7 @@
 <?php
 require_once 'const.php';
 require_once 'url.php';
+require_once 'secret.php';
 require_once MODEL_PATH . 'helpers.php';
 require_once MODEL_PATH . 'db.php';
 require_once MODEL_PATH . 'Auth.php';

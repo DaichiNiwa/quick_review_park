@@ -1,11 +1,4 @@
 <?php
-// データベース接続（本番環境で変更）
-define('DB_HOST', 'mysql');
-define('DB_NAME', 'sample');
-define('DB_USER', 'testuser');
-define('DB_PASS', 'password');
-define('DB_CHARSET', 'utf8');
-
 // バリデーション文字制限
 define('REGEXP_ALPHANUMERIC', '/\A[0-9a-zA-Z]+\z/');
 define('REGEXP_POSITIVE_INTEGER', '/\A([1-9][0-9]*|0)\z/');

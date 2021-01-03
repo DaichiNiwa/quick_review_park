@@ -11,12 +11,32 @@
 
     <?php include VIEW_PATH . 'templates/messages.php'; ?>
 
-    <div class="border-bottom py-2">
+    <div class="border-bottom py-3 my-3">
         <p><?= h($shop->detail) ?></p>
-        <p>平均スコア: <?= h($shop->average_score) ?>　　</p>
+        <p>平均スコア: <?= h($shop->get_average_score($db)) ?>　　</p>
         <p>レビュー数: <?= h($shop->total_reviews) ?></p>
+    <a class="btn btn-primary" href="<?= h(REVIEWS_CREATE . '?id=' . $shop->id); ?>">レビュー投稿</a>
     </div>
-    <a class="btn btn-secondary my-3" href="<?= h(REVIEWS_CREATE . '?shop_id=' . $shop->id); ?>">レビュー投稿</a>
+
+    <h4>レビュー一覧</h4>
+    <table class="table table-bordered">
+        <thead class="thead-lignt">
+        <tr>
+            <th>ユーザー名</th>
+            <th class="col-2">スコア</th>
+            <th>投稿日時</th>
+            <th>詳細</th>
+        </tr>
+        <?php foreach ($reviews as $review) { ?>
+            <tr>
+                <td><?= $review->user_name ?></td>
+                <td><?= $review->formatted_total_score() ?></td>
+                <td><?= $review->created_at ?></td>
+                <td><a class="btn btn-secondary" href="<?= h(REVIEWS_SHOW . "?id=" . $review->id); ?>">詳細</a></td>
+            </tr>
+        <?php } ?>
+        </thead>
+    </table>
 </div>
 </body>
 </html>

@@ -170,10 +170,23 @@ class Validator
      * @param $shop_id
      * @return bool
      */
-    private function is_existing_shop_id($db, $shop_id)
+    public function is_existing_shop_id($db, $shop_id)
     {
         if ($this->count_id($db, $shop_id, 'shops') === 1) {
+            return true;
+        }
 
+        return false;
+    }
+
+    /**
+     * @param $db
+     * @param $review_id
+     * @return bool
+     */
+    public function is_existing_review_id($db, $review_id)
+    {
+        if ($this->count_id($db, $review_id, 'reviews') === 1) {
             return true;
         }
 

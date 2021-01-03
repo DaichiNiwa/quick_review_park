@@ -7,7 +7,7 @@ if (!Auth::check()) {
     redirect_to(LOGIN);
 }
 
-$shop_id = (int)get_get('shop_id');
+$shop_id = (int)get_get('id');
 $db = get_db_connect();
 $token = get_csrf_token();
 

@@ -61,6 +61,30 @@ class User
 
         return fetch_object($db, $sql, 'User', $params);
     }
+
+    public function fetch_reviews($db)
+    {
+        $sql = "
+            SELECT
+                id,
+                shop_id,
+                user_id,
+                created_at,
+                id as self_id,
+               (SELECT SUM(score) FROM sentences WHERE review_id = self_id) as total_score,
+               (SELECT name FROM shops WHERE id = shop_id) as shop_name
+            FROM
+                reviews
+            WHERE 
+              user_id = :user_id
+          ";
+
+        $params = [
+            ':user_id' => $this->id
+        ];
+
+        return fetch_all_objects($db, $sql, 'Review', $params);
+    }
 }
 
 
