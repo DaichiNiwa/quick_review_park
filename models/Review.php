@@ -7,7 +7,7 @@ class Review
     public $shop_id;
     public $user_id;
     public $created_at;
-    public $total_score = 0;
+    private $total_score = 0;
     public $contents;
     public $shop_name = '';
     public $user_name = '';
@@ -60,6 +60,9 @@ class Review
         return fetch_object($db, $sql, 'Review', $params);
     }
 
+    /**
+     * @return float
+     */
     public function formatted_total_score() {
         return round($this->total_score, 1);
     }
