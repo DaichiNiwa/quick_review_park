@@ -10,6 +10,7 @@
     <h3>ログイン</h3>
 
     <?php include VIEW_PATH . 'templates/messages.php'; ?>
+    <p>名前：testuser、パスワード：passwordでログインできます。</p>
 
     <form method="post" action="login_process.php" class="login_form mx-auto">
         <div class="form-group">

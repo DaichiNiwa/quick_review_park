@@ -26,7 +26,7 @@ CREATE TABLE `reviews` (
   `id` int(11) NOT NULL,
   `shop_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -41,7 +41,7 @@ CREATE TABLE `sentences` (
   `body` varchar(200) NOT NULL,
   `order_number` int(11) NOT NULL,
   `score` float NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -54,7 +54,7 @@ CREATE TABLE `shops` (
   `id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
   `detail` varchar(100) DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -67,7 +67,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(10) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
