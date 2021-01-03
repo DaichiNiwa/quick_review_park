@@ -29,9 +29,9 @@
         </tr>
         <?php foreach ($reviews as $review) { ?>
             <tr>
-                <td><?= $review->user_name ?></td>
-                <td><?= $review->formatted_total_score() ?></td>
-                <td><?= $review->created_at ?></td>
+                <td><?= h($review->user_name) ?></td>
+                <td><?= h($review->formatted_total_score()) ?></td>
+                <td><?= h($review->created_at) ?></td>
                 <td><a class="btn btn-secondary" href="<?= h(REVIEWS_SHOW . "?id=" . $review->id); ?>">詳細</a></td>
             </tr>
         <?php } ?>
