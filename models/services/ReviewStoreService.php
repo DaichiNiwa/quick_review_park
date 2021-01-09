@@ -52,6 +52,7 @@ class ReviewStoreService
 
         $result = curl_exec($handle);
         curl_close($handle);
+        dd($result);
         return json_decode($result);
     }
 
